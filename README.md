@@ -2,8 +2,7 @@
 
 ## Link aplicación web
 
-[SparkWebApp](https://arep-lab2-sparkwebapp.herokuapp.com/inputdata)
-https://arep-lab2-sparkwebapp.herokuapp.com/inputdata
+[SparkWebApp](https://exam-1-arep.herokuapp.com/inputdata)
 
 ---
 
@@ -25,7 +24,7 @@ Debemos tener los siguientes programas instalados:
 
 ## Despliegue continuo
 
-[![CircleCI](https://circleci.com/gh/JuanNavarroJ/Arep_Lab2_SparkWebApp.svg?style=svg)](https://circleci.com/gh/JuanNavarroJ/Arep_Lab2_SparkWebApp)
+[![CircleCI](https://circleci.com/gh/JuanNavarroJ/Arep-exam1.svg?style=svg)](https://circleci.com/gh/JuanNavarroJ/Arep-exam1)
 
 ## Desarrollo
 

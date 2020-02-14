@@ -11,9 +11,11 @@ import edu.escuelaing.arep.linkedList.Nodo;
 import spark.Request;
 import spark.Response;
 import static spark.Spark.*;
+import org.json.simple.JSONObject;
 
 /**
  * Clase SparWebApp que crea una web desarrollada con SPARK.
+ *
  * @author Juan David
  */
 public class SparkWebApp {
@@ -38,8 +40,9 @@ public class SparkWebApp {
 
     /**
      * Metodo que crea el html de la pagina web.
-     * @param req   Es el request de Spark
-     * @param res   Es el response de Spark
+     *
+     * @param req Es el request de Spark
+     * @param res Es el response de Spark
      * @return Retorna Un html en forma de string.
      */
     private static String inputDataPage(Request req, Response res) {
@@ -47,17 +50,15 @@ public class SparkWebApp {
                 = "<!DOCTYPE html>"
                 + "<html>"
                 + "<style>"
-                
                 + "input[type=text], select { "
-                    + "width: 100%;"
-                    + "padding: 12px 20px;"
-                    + "margin: 8px 0;"
-                    + "display: inline-block;"
-                    + "border: 1px solid #ccc;"
-                    + "border-radius: 4px;"
-                    + "box-sizing: border-box;"
+                + "width: 100%;"
+                + "padding: 12px 20px;"
+                + "margin: 8px 0;"
+                + "display: inline-block;"
+                + "border: 1px solid #ccc;"
+                + "border-radius: 4px;"
+                + "box-sizing: border-box;"
                 + "}"
-                
                 + "input[type=submit] { "
                 + "    width: 100%;"
                 + "    background-color: #4CAF50;"
@@ -68,26 +69,22 @@ public class SparkWebApp {
                 + "    border-radius: 4px;"
                 + "    cursor: pointer;"
                 + "}"
-
                 + "input[type=submit]:hover {"
                 + "background-color: #45a049;"
                 + "}"
-
                 + "div {"
-                +    "border-radius: 5px;"
-                +    "background-color: #f2f2f2;"
-                +    "padding: 20px;"
-                +    "}"
-                
-                +"</style>"
-        
+                + "border-radius: 5px;"
+                + "background-color: #f2f2f2;"
+                + "padding: 20px;"
+                + "}"
+                + "</style>"
                 + "<body>"
                 + "<h2>Merge Sort y Sumatoria</h2>"
                 + "<form action=\"/results\">"
                 + "  Digite los numeros separados por comas.<br>"
                 + "  <input type=\"text\" name='numeros'>"
                 + "  <br>"
-                + "  <input type=\"submit\" value=\"Calular Media y Desviacion Estandar\">"
+                + "  <input type=\"submit\" value=\"Ordenar los numeros ingresados de mayor a menor y obtener su sumatoria.\">"
                 + "</form>"
                 + "</body>"
                 + "</html>";
@@ -96,36 +93,40 @@ public class SparkWebApp {
 
     /**
      * Metodo que retorna un html con la respuesta.
-     * @param req   Es el request de Spark
-     * @param res   Es el response de Spark
-     * @return  Retorna un String con el html el cual contiene la respuesta de la media y demas datos.
+     *
+     * @param req Es el request de Spark
+     * @param res Es el response de Spark
+     * @return Retorna un String con el html el cual contiene la respuesta de la
+     * media y demas datos.
      */
-    private static String resultsPage(Request req, Response res) {
+    private static JSONObject resultsPage(Request req, Response res) {
+        JSONObject obj = new JSONObject();
+
+        obj.put("name", "foo");
+        obj.put("num", new Integer(100));
+        obj.put("balance", new Double(1000.21));
+        obj.put("is_vip", new Boolean(true));
+
+        System.out.print(obj);
         linkedList.clear();
         /**
-        double num;
-        String ans;
-        String[] values = req.queryParams("numeros").split(",");
-        for (String i : values) {
-            num = Double.parseDouble(i);
-            Nodo nodo = new Nodo(num, 0, null, null);
-            linkedList.add(nodo);
-        }
-
-        
-        
-        ans = "<!DOCTYPE html>"
-                + "<html>"
-                + "<body>"
-                + "<h2>" + "La Media de la lista de datos es: " + calculadora.calcularMedia(linkedList) + "<h2>"
-                + "<h2>" + "La Desviacion Estandar de la lista de datos es: " + calculadora.calcularDesviacionEstandar(linkedList) + "<h2>"
-                + "<form>"
-                + "<input type=\"button\" value=\"Volver a modificar los datos!\" onclick=\"history.back()\">"
-                + "</form>"
-                + "</body>"
-                + "</html>";
-        **/
-        return "HOLA";
+         * double num; String ans; String[] values =
+         * req.queryParams("numeros").split(","); for (String i : values) { num
+         * = Double.parseDouble(i); Nodo nodo = new Nodo(num, 0, null, null);
+         * linkedList.add(nodo); }
+         *
+         *
+         *
+         * ans = "<!DOCTYPE html>" + "<html>" + "<body>" + "<h2>" + "La Media de
+         * la lista de datos es: " + calculadora.calcularMedia(linkedList) +
+         * "<h2>" + "<h2>" + "La Desviacion Estandar de la lista de datos es: "
+         * + calculadora.calcularDesviacionEstandar(linkedList) + "<h2>" +
+         * "<form>" +
+         * "<input type=\"button\" value=\"Volver a modificar los datos!\" onclick=\"history.back()\">"
+         * + "</form>" + "</body>" + "</html>";
+        *
+         */
+        return obj;
     }
 
     /**
