@@ -6,8 +6,8 @@
 package edu.escuelaing.arep;
 
 import edu.escuealing.arep.calculadora.Calculadora;
-import edu.escuelaing.arep.linkedList.LinkedList;
-import edu.escuelaing.arep.linkedList.Nodo;
+import edu.escuealing.arep.calculadora.MergeSort;
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import spark.Request;
 import spark.Response;
@@ -21,8 +21,6 @@ public class SparkWebApp {
 
     // Atributos
     private static Calculadora calculadora;
-    private static LinkedList linkedList;
-    private Nodo nodo;
 
     /**
      * This main method uses SparkWeb static methods and lambda functions to
@@ -31,7 +29,6 @@ public class SparkWebApp {
      */
     public static void main(String[] args) {
         calculadora = new Calculadora();
-        linkedList = new LinkedList();
         port(getPort());
         get("/inputdata", (req, res) -> inputDataPage(req, res));
         get("/results", (req, res) -> resultsPage(req, res));
@@ -103,7 +100,6 @@ public class SparkWebApp {
      */
     private static JSONObject resultsPage(Request req, Response res) {
         double num;
-        String ans;
         String[] values = req.queryParams("numeros").split(",");
         Double[] lista = new Double[values.length];
         int cont=0;
@@ -112,9 +108,14 @@ public class SparkWebApp {
             lista[cont]=num;
             cont++;
         }
-        JSONObject obj = new JSONObject();
-        
-        obj.put("Lista", lista);
+        MergeSort.mergeSort(lista, lista.length);
+        JSONArray jsonA = new JSONArray();
+        for (Double n:lista) {
+            jsonA.add(n);
+        }
+        JSONObject jsonO = new JSONObject();
+        jsonO.put("Lista", jsonA);
+        jsonO.put("Sumatoria", calculadora.calcularSumatoria(lista));
 
         /**
         ans = "<!DOCTYPE html>"
@@ -128,7 +129,7 @@ public class SparkWebApp {
                 + "</body>"
                 + "</html>";
         **/
-        return obj;
+        return jsonO;
     }
 
     /**
