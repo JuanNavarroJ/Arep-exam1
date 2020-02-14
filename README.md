@@ -29,9 +29,9 @@ Json retornado por la aplicación.
 Construido con:
 
 -   [Maven](https://maven.apache.org/)  - Control de dependencias
--	[CircleCI] (https://circleci.com/)  - Despliegue continuo
--	[Heroku] (https://dashboard.heroku.com/apps) - Plataforma Web
-- [Spark] (http://sparkjava.com/) - SparkFramework
+-	  [CircleCI](https://circleci.com/)  - Despliegue continuo
+-	  [Heroku](https://dashboard.heroku.com/apps) - Plataforma Web
+-   [Spark](http://sparkjava.com/) - SparkFramework
 
 ## Autor
 
