@@ -1,41 +1,37 @@
 # Examen primer corte MergeSort
 
-## Link aplicaci髇 web
+## Link aplicaci贸n web
 
-[SparkWebApp](https://exam-1-arep.herokuapp.com/inputdata)
+[Aplicaci贸n desplegada en heroku](https://exam-1-arep.herokuapp.com/inputdata)
+
+https://exam-1-arep.herokuapp.com/inputdata
 
 ---
 
-Este proyecto permite calcular la media y desviaci髇 est醤dar de un grupo de datos dados por medio de una pagina web, para realizar el ejercicio se utilizo una propia lista enlazada la cual permite almacenar cada dato ingresado y poder procesarlo. 
+En el desarrollo del parcial se quiere crear un servidor web desplegado en heroku, en el cual el usuario ingresara una serie de n煤meros enteros separados por comas y la aplicaci贸n los ordenara de menor a mayor usando MergeSort y tambi茅n tiene la funcionalidad de calcular la sumatoria de todos los elementos ingresados.
+
+Aplicaci贸n web donde el usuario ingresa los datos.
+![Capture1](https://user-images.githubusercontent.com/44879884/74557452-2d943900-4f2e-11ea-84e4-30d7b5579927.PNG)
+
+Resultado retornado por la aplicaci贸n.
+![Capture2](https://user-images.githubusercontent.com/44879884/74557453-2ec56600-4f2e-11ea-9bd7-57d18929ec16.PNG)
+
+Json retornado por la aplicaci贸n.
+![Capture3](https://user-images.githubusercontent.com/44879884/74557455-2ec56600-4f2e-11ea-994e-69d36c20af43.PNG)
 
 
-
-### Prerequisites
-
-Debemos tener los siguientes programas instalados:
-```
-- Maven 
-- Git
-```
-
-## 緾omo instalar y probar?
-
-
-
-## Despliegue continuo
+## Despliegue continuo con CircleCI
 
 [![CircleCI](https://circleci.com/gh/JuanNavarroJ/Arep-exam1.svg?style=svg)](https://circleci.com/gh/JuanNavarroJ/Arep-exam1)
 
 ## Desarrollo
-
 
 Construido con:
 
 -   [Maven](https://maven.apache.org/)  - Control de dependencias
 -	[CircleCI] (https://circleci.com/)  - Despliegue continuo
 -	[Heroku] (https://dashboard.heroku.com/apps) - Plataforma Web
-
-
+- [Spark] (http://sparkjava.com/) - SparkFramework
 
 ## Autor
 
@@ -44,4 +40,4 @@ Construido con:
 
 ## License
 
-This project is licensed under the GNU General Public License v3.0 - see the  [LICENSE.md]([https://github.com/JuanNavarroJ/ProyectoPSP0/blob/master/LICENSE.txt](https://github.com/JuanNavarroJ/ProyectoPSP0/blob/master/LICENSE.txt))  file for details.
+Licencia GNU puede consultarla en [LICENSE.md](https://github.com/JuanNavarroJ/Arep-exam1/blob/master/LICENSE.txt)
