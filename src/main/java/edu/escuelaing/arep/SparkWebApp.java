@@ -15,6 +15,7 @@ import static spark.Spark.*;
 
 /**
  * Clase SparWebApp que crea una web desarrollada con SPARK.
+ *
  * @author Juan David
  */
 public class SparkWebApp {
@@ -31,13 +32,17 @@ public class SparkWebApp {
         calculadora = new Calculadora();
         port(getPort());
         get("/inputdata", (req, res) -> inputDataPage(req, res));
-        get("/results", (req, res) -> resultsPage(req, res));
+        get("/results", (req, res) -> {
+            res.type("application/json");
+            return resultsPage(req,res);
+        });
     }
 
     /**
      * Metodo que crea el html de la pagina web.
-     * @param req   Es el request de Spark
-     * @param res   Es el response de Spark
+     *
+     * @param req Es el request de Spark
+     * @param res Es el response de Spark
      * @return Retorna Un html en forma de string.
      */
     private static String inputDataPage(Request req, Response res) {
@@ -45,17 +50,15 @@ public class SparkWebApp {
                 = "<!DOCTYPE html>"
                 + "<html>"
                 + "<style>"
-                
                 + "input[type=text], select { "
-                    + "width: 100%;"
-                    + "padding: 12px 20px;"
-                    + "margin: 8px 0;"
-                    + "display: inline-block;"
-                    + "border: 1px solid #ccc;"
-                    + "border-radius: 4px;"
-                    + "box-sizing: border-box;"
+                + "width: 100%;"
+                + "padding: 12px 20px;"
+                + "margin: 8px 0;"
+                + "display: inline-block;"
+                + "border: 1px solid #ccc;"
+                + "border-radius: 4px;"
+                + "box-sizing: border-box;"
                 + "}"
-                
                 + "input[type=submit] { "
                 + "    width: 100%;"
                 + "    background-color: #4CAF50;"
@@ -66,19 +69,15 @@ public class SparkWebApp {
                 + "    border-radius: 4px;"
                 + "    cursor: pointer;"
                 + "}"
-
                 + "input[type=submit]:hover {"
                 + "background-color: #45a049;"
                 + "}"
-
                 + "div {"
-                +    "border-radius: 5px;"
-                +    "background-color: #f2f2f2;"
-                +    "padding: 20px;"
-                +    "}"
-                
-                +"</style>"
-        
+                + "border-radius: 5px;"
+                + "background-color: #f2f2f2;"
+                + "padding: 20px;"
+                + "}"
+                + "</style>"
                 + "<body>"
                 + "<h2>Ordenar un conjunto de numeros con MargeSort</h2>"
                 + "<form action=\"/results\">"
@@ -94,41 +93,32 @@ public class SparkWebApp {
 
     /**
      * Metodo que retorna un html con la respuesta.
-     * @param req   Es el request de Spark
-     * @param res   Es el response de Spark
-     * @return  Retorna un String con el html el cual contiene la respuesta de la media y demas datos.
+     *
+     * @param req Es el request de Spark
+     * @param res Es el response de Spark
+     * @return Retorna un String con el html el cual contiene la respuesta de la
+     * media y demas datos.
      */
     private static JSONObject resultsPage(Request req, Response res) {
-        double num;
+        int num;
         String[] values = req.queryParams("numeros").split(",");
-        Double[] lista = new Double[values.length];
-        int cont=0;
+        int[] lista = new int[values.length];
+        int cont = 0;
         for (String i : values) {
-            num = Double.parseDouble(i);
-            lista[cont]=num;
+            num = Integer.parseInt(i);
+            lista[cont] = num;
             cont++;
         }
         MergeSort.mergeSort(lista, lista.length);
         JSONArray jsonA = new JSONArray();
-        for (Double n:lista) {
+        for (int n : lista) {
             jsonA.add(n);
         }
         JSONObject jsonO = new JSONObject();
         jsonO.put("Lista", jsonA);
         jsonO.put("Sumatoria", calculadora.calcularSumatoria(lista));
 
-        /**
-        ans = "<!DOCTYPE html>"
-                + "<html>"
-                + "<body>"
-                + "<h2>" + "La Media de la lista de datos es: " + calculadora.calcularMedia(linkedList) + "<h2>"
-                + "<h2>" + "La Desviacion Estandar de la lista de datos es: " + calculadora.calcularDesviacionEstandar(linkedList) + "<h2>"
-                + "<form>"
-                + "<input type=\"button\" value=\"Volver a modificar los datos!\" onclick=\"history.back()\">"
-                + "</form>"
-                + "</body>"
-                + "</html>";
-        **/
+        
         return jsonO;
     }
 

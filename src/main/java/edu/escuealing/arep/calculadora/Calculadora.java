@@ -15,10 +15,7 @@ package edu.escuealing.arep.calculadora;
 public class Calculadora {
 
     //Atributos
-    private double sumatoria;
-
-    public Calculadora() {
-    }
+    private int sumatoria;
 
     /**
      * Metodo que calcula la sumatoria de todos los elementos de la linkedList
@@ -27,7 +24,7 @@ public class Calculadora {
      * analizar.
      * @return Retorna la suma de todos los elementos de la linkedList
      */
-    public double calcularSumatoria(Double[] lista) {
+    public int calcularSumatoria(int[] lista) {
         sumatoria = 0;
         for (int i = 0; i < lista.length; i++) {
             sumatoria = sumatoria + lista[i];
