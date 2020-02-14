@@ -18,10 +18,9 @@ public class Calculadora {
     private int sumatoria;
 
     /**
-     * Metodo que calcula la sumatoria de todos los elementos de la linkedList
+     * Metodo que calcula la sumatoria de todos los elementos de una lista dada
      *
-     * @param lista Es la linkedList donde esta la informacion que se va a
-     * analizar.
+     * @param lista Es la cual queremos calcular 
      * @return Retorna la suma de todos los elementos de la linkedList
      */
     public int calcularSumatoria(int[] lista) {

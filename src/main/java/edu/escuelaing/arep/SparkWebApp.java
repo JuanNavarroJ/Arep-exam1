@@ -92,7 +92,7 @@ public class SparkWebApp {
     }
 
     /**
-     * Metodo que retorna un html con la respuesta.
+     * Metodo que retorna un JSON con la respuesta.
      *
      * @param req Es el request de Spark
      * @param res Es el response de Spark
